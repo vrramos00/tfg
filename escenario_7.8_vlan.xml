@@ -4,7 +4,7 @@
 
   <global>
     <version>2.0</version>
-    <scenario_name>escenario_vlan_untagged</scenario_name>
+    <scenario_name>escenario_7.8_vlan</scenario_name>
     <automac/>
     <vm_mgmt type="private" network="10.250.0.0" mask="24" offset="200">
        <host_mapping />
