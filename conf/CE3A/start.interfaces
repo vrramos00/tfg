@@ -1,0 +1,2 @@
+ifconfig lo0 -inet6
+ifconfig em0 172.16.1.4/24 up
