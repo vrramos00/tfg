@@ -4,7 +4,7 @@
 
   <global>
     <version>2.0</version>
-    <scenario_name>escenario_7.8_vlan</scenario_name>
+    <scenario_name>escenario_vlan_untagged</scenario_name>
     <automac/>
     <vm_mgmt type="private" network="10.250.0.0" mask="24" offset="200">
        <host_mapping />
@@ -16,15 +16,21 @@
   </global>
 
 
-  <net name="Net0" mode="virtual_bridge"/> <!--Red virtual que conecta los equipos finales de la izquierda de SW1 con SW1-->
-  <net name="Net1" mode="virtual_bridge"/> <!--Red virtual que conecta PEs-->
-  <net name="Net2" mode="virtual_bridge"/> <!--Red virtual que conecta los equipos finales de la derecha de SW2 con SW2-->
+  <net name="Net0" mode="virtual_bridge"/> <!--Red virtual que conecta el equipo final CE1 con SW1-->
+  <net name="Net1" mode="virtual_bridge"/> <!--Red virtual que conecta el equipo final CE2 con SW1-->
+  <net name="Net2" mode="virtual_bridge"/> <!--Red virtual que conecta el equipo final CE3 con SW1-->
+  <net name="Net3" mode="virtual_bridge"/> <!--Red virtual que conecta los switches-->
+  <net name="Net4" mode="virtual_bridge"/> <!--Red virtual que conecta el equipo final CE4 con SW2-->
+  <net name="Net5" mode="virtual_bridge"/> <!--Red virtual que conecta el equipo final CE5 con SW2-->
+  <net name="Net6" mode="virtual_bridge"/> <!--Red virtual que conecta el equipo final CE6 con SW2-->
 
 
   <vm name="SW1" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
     <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.8.qcow2</filesystem>
     <if id="1" net="Net0"/>
     <if id="2" net="Net1"/>
+    <if id="3" net="Net2"/>
+    <if id="4" net="Net3"/>
     <forwarding type="ip"/>
     <filetree seq="on_boot" root="/root/">conf_basico/SW1</filetree>
   </vm>
@@ -32,8 +38,10 @@
  
   <vm name="SW2" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
    <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.8.qcow2</filesystem>
-    <if id="1" net="Net1"/>
-    <if id="2" net="Net2"/>
+    <if id="1" net="Net4"/>
+    <if id="2" net="Net5"/>
+    <if id="3" net="Net6"/>
+    <if id="4" net="Net3"/>
     <forwarding type="ip"/>
     <filetree seq="on_boot" root="/root/">conf_basico/SW2</filetree>
   </vm>
@@ -50,7 +58,7 @@
  
   <vm name="CE2" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
    <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.8.qcow2</filesystem>
-    <if id="1" net="Net0">
+    <if id="1" net="Net1">
       <ipv4>172.16.20.1/24</ipv4>
     </if>
     <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
@@ -58,7 +66,7 @@
 
    <vm name="CE3" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
    <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.8.qcow2</filesystem>
-    <if id="1" net="Net0">
+    <if id="1" net="Net2">
       <ipv4>172.16.30.1/24</ipv4>
     </if>
     <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
@@ -66,7 +74,7 @@
 
   <vm name="CE4" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
    <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.8.qcow2</filesystem>
-    <if id="1" net="Net2">
+    <if id="1" net="Net4">
       <ipv4>172.16.10.2/24</ipv4>
     </if>
     <filetree seq="on_boot" root="/root/">conf_basico/CE1</filetree>
@@ -74,8 +82,8 @@
 
  
   <vm name="CE5" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
-   <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.8.qcow2</filesystem>
-    <if id="1" net="Net2">
+   <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.4.qcow2</filesystem>
+    <if id="1" net="Net5">
       <ipv4>172.16.20.2/24</ipv4>
     </if>
     <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
@@ -83,7 +91,7 @@
 
    <vm name="CE6" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
    <filesystem type="cow">/home/victor.rojo.ramos/EscenarioOpenBSD/escenariokvm_l2vpn/filesystems/vnx_rootfs_kvm_openbsd64-7.8.qcow2</filesystem>
-    <if id="1" net="Net2">
+    <if id="1" net="Net6">
       <ipv4>172.16.30.2/24</ipv4>
     </if>
     <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
