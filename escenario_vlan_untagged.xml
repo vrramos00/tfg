@@ -69,7 +69,7 @@
     <if id="1" net="Net2">
       <ipv4>172.16.30.1/24</ipv4>
     </if>
-    <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
+    <filetree seq="on_boot" root="/root/">conf_basico/CE3</filetree>
   </vm>
 
   <vm name="CE4" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
@@ -77,7 +77,7 @@
     <if id="1" net="Net4">
       <ipv4>172.16.10.2/24</ipv4>
     </if>
-    <filetree seq="on_boot" root="/root/">conf_basico/CE1</filetree>
+    <filetree seq="on_boot" root="/root/">conf_basico/CE4</filetree>
   </vm>
 
  
@@ -86,7 +86,7 @@
     <if id="1" net="Net5">
       <ipv4>172.16.20.2/24</ipv4>
     </if>
-    <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
+    <filetree seq="on_boot" root="/root/">conf_basico/CE5</filetree>
   </vm>
 
    <vm name="CE6" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
@@ -94,7 +94,7 @@
     <if id="1" net="Net6">
       <ipv4>172.16.30.2/24</ipv4>
     </if>
-    <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
+    <filetree seq="on_boot" root="/root/">conf_basico/CE6</filetree>
   </vm>
 
 </vnx>
