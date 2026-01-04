@@ -91,7 +91,7 @@
     <if id="1" net="NetCE3">
       <ipv4>172.16.40.2/24</ipv4>
     </if>
-    <filetree seq="on_boot" root="/root/">conf_basico/CE2</filetree>
+    <filetree seq="on_boot" root="/root/">conf_basico/CE3</filetree>
   </vm>
 
   <vm name="CE4" type="libvirt" subtype="kvm" os="openbsd" arch="x86_64">
@@ -99,7 +99,7 @@
     <if id="1" net="NetCE4">
       <ipv4>172.16.80.2/24</ipv4>
     </if>
-    <filetree seq="on_boot" root="/root/">conf_basico/CE1</filetree>
+    <filetree seq="on_boot" root="/root/">conf_basico/CE4</filetree>
   </vm>
 
 </vnx>
